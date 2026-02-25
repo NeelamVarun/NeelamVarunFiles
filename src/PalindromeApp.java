@@ -2,38 +2,23 @@ import java.util.*;
 
 public class PalindromeApp {
     public static void main(String[] args) {
-        System.out.println("--- Welcome to the Palindrome Checker App ---");
+        // ... previous UC code remains above ...
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a phrase: ");
-        String input = sc.nextLine();
+        String input = "madam"; // Or use your scanner variable
 
-        // Logic for UC5 (Space/Case handling)
-        String word = input.replace(" ", "").toLowerCase();
-        String reversed = new StringBuilder(word).reverse().toString();
-
-        if (word.equals(reversed)) {
-            System.out.println("\"" + input + "\" is a Palindrome.");
-        } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome.");
+        Deque<Character> deque = new LinkedList<>();
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
 
-        // UC6: Queue + Stack Logic
-        Queue<Character> q = new LinkedList<>();
-        Stack<Character> s = new Stack<>();
-        for (char c : word.toCharArray()) {
-            q.add(c);
-            s.push(c);
-        }
-        boolean isUc6Palindrome = true;
-        while (!q.isEmpty()) {
-            if (!q.remove().equals(s.pop())) {
-                isUc6Palindrome = false;
+        boolean isDequePalindrome = true;
+        while (deque.size() > 1) {
+            // Updated with .equals() fix
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                isDequePalindrome = false;
                 break;
             }
         }
-        System.out.println("UC6: Palindrome check: " + isUc6Palindrome + " (Queue + Stack)");
-
-        sc.close();
+        System.out.println("UC7: Palindrome check: " + isDequePalindrome + " (Deque)");
     }
 }
