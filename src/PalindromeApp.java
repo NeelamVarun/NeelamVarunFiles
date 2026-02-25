@@ -5,16 +5,16 @@ public class PalindromeApp {
         System.out.println("--- Welcome to the Palindrome Checker App ---");
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a string: ");
-        String original = sc.nextLine();
-        String word = original.toLowerCase();
+        System.out.print("Enter a phrase: ");
+        String input = sc.nextLine();
+        String word = input.replace(" ", "").toLowerCase();
 
         String reversed = new StringBuilder(word).reverse().toString();
 
         if (word.equals(reversed)) {
-            System.out.println(original + " is a Palindrome (Case Insensitive).");
+            System.out.println("\"" + input + "\" is a Palindrome (Ignoring Spaces).");
         } else {
-            System.out.println(original + " is NOT a Palindrome.");
+            System.out.println("\"" + input + "\" is NOT a Palindrome.");
         }
         sc.close();
     }
