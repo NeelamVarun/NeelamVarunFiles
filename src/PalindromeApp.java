@@ -1,21 +1,23 @@
-public class UC11PalindromeOOP {
+public class UC12PalindromeStrategy {
 
     public static void main(String[] args) {
         // Input string
         String input = "Race Car";
 
-        // Use PalindromeService to check
-        PalindromeService service = new PalindromeService();
-        System.out.println("UC11: OOP Service check: " + service.check(input));
+        // Strategy using lambda expression
+        PalindromeStrategy strategy = (str) -> {
+            // Normalize: remove spaces and convert to lowercase
+            String normalized = str.replaceAll("\\s+", "").toLowerCase();
+            // Check palindrome
+            return new StringBuilder(normalized).reverse().toString().equals(normalized);
+        };
+
+        // Use strategy to check palindrome
+        System.out.println("UC12: Strategy Pattern check: " + strategy.isValid(input));
     }
 
-    // PalindromeService class
-    static class PalindromeService {
-        public boolean check(String s) {
-            // Normalize: remove spaces and ignore case
-            String normalized = s.replaceAll("\\s+", "").toLowerCase();
-            // Check palindrome
-            return normalized.equals(new StringBuilder(normalized).reverse().toString());
-        }
+    // Interface defining the strategy
+    interface PalindromeStrategy {
+        boolean isValid(String s);
     }
-}}
+}
