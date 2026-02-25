@@ -6,14 +6,15 @@ public class PalindromeApp {
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a string: ");
-        String word = sc.nextLine();
+        String original = sc.nextLine();
+        String word = original.toLowerCase();
 
         String reversed = new StringBuilder(word).reverse().toString();
 
         if (word.equals(reversed)) {
-            System.out.println(word + " is a Palindrome.");
+            System.out.println(original + " is a Palindrome (Case Insensitive).");
         } else {
-            System.out.println(word + " is NOT a Palindrome.");
+            System.out.println(original + " is NOT a Palindrome.");
         }
         sc.close();
     }
